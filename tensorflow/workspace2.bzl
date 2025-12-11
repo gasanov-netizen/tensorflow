@@ -109,6 +109,37 @@ def _initialize_third_party():
     nvshmem()
     triton()
 
+    tf_http_archive(
+        name = "com_google_sentencepiece",
+        strip_prefix = "sentencepiece-0.1.96",
+        sha256 = "8409b0126ebd62b256c685d5757150cf7fcb2b92a2f2b98efb3f38fc36719754",
+        urls = tf_mirror_urls("https://github.com/google/sentencepiece/archive/refs/tags/v0.1.96.zip"),
+        build_file = "//third_party/sentencepiece:BUILD",
+        patch_file = ["//third_party/sentencepiece:sp.patch"],
+    )
+
+    tf_http_archive(
+        name = "cppitertools",
+        urls = tf_mirror_urls("https://github.com/ryanhaining/cppitertools/archive/refs/tags/v2.0.zip"),
+        sha256 = "e56741b108d6baced98c4ccd83fd0d5a545937f2845978799c28d0312c0dee3d",
+        strip_prefix = "cppitertools-2.0",
+    )
+
+    tf_http_archive(
+        name = "darts_clone",
+        build_file = "//third_party/darts_clone:BUILD.bzl",
+        sha256 = "c97f55d05c98da6fcaf7f9ecc6a6dc6bc5b18b8564465f77abff8879d446491c",
+        strip_prefix = "darts-clone-e40ce4627526985a7767444b6ed6893ab6ff8983",
+        urls = tf_mirror_urls("https://github.com/s-yata/darts-clone/archive/e40ce4627526985a7767444b6ed6893ab6ff8983.zip"),
+    )
+
+    tf_http_archive(
+        name = "io_bazel_rules_closure",
+        sha256 = "5b00383d08dd71f28503736db0500b6fb4dda47489ff5fc6bed42557c07c6ba9",
+        strip_prefix = "rules_closure-308b05b2419edb5c8ee0471b67a40403df940149",
+        urls = tf_mirror_urls("https://github.com/bazelbuild/rules_closure/archive/308b05b2419edb5c8ee0471b67a40403df940149.tar.gz"),
+    )
+
     # copybara: tsl vendor
 
 # Toolchains & platforms required by Tensorflow to build.

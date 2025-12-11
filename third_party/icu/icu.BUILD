@@ -84,3 +84,13 @@ config_setting(
     name = "windows",
     values = {"cpu": "x64_windows"},
 )
+
+alias(
+    name = "nfkc",
+    actual = ":common",
+)
+
+alias(
+    name = "nfkc_cf",
+    actual = ":common",
+)

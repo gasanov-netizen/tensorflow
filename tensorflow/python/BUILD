@@ -1688,6 +1688,12 @@ pywrap_library(
         "//tensorflow/python/util:_tf_stack",
         "//tensorflow/python/util:fast_module_type",
         "//tensorflow/python/util:pywrap_xla_ops",
+        "//tensorflow_text/core/pybinds:tflite_registrar",
+        "//tensorflow_text/core/pybinds:pywrap_fast_bert_normalizer_model_builder",
+        "//tensorflow_text/core/pybinds:pywrap_fast_wordpiece_tokenizer_model_builder",
+        "//tensorflow_text/core/pybinds:pywrap_phrase_tokenizer_model_builder",
+        "//tensorflow_text/core/pybinds:pywrap_model_converter",
+        "//tensorflow_text/core/pybinds:pywrap_whitespace_tokenizer_config_builder",
     ],
 )
 
