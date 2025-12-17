@@ -1730,14 +1730,3 @@ py_strict_library(
 )
 # copybara:comment_end
 
-alias(
-    name = "libtensorflow_framework_dylib_public",
-    actual = "libtensorflow_framework.dylib",
-    visibility = ["//visibility:public"],
-)
-
-alias(
-    name = "libtensorflow_framework_so_public",
-    actual = "libtensorflow_framework.so",
-    visibility = ["//visibility:public"],
-)

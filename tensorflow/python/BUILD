@@ -1587,6 +1587,14 @@ pywrap_library(
                 "-lm",
             ],
         }),
+        # TODO: remove after testing. 
+        "tensorflow/python/_pywrap_tensorflow_common": select({
+            "//tensorflow:windows": [],
+            "//tensorflow:macos": [],
+            "//conditions:default": [
+                # "-z defs",
+            ],
+        })
     },
     # buildifier: disable=unsorted-dict-items
     # @unsorted-dict-items
@@ -1603,6 +1611,13 @@ pywrap_library(
         "tensorflow/tensorflow_framework": "2",
         "tensorflow/tensorflow_cc": "2",
     },
+
+    # TODO: tech debt. Move it to the files which are required it.
+    extra_deps = [
+        "@flatbuffers",
+        "@icu//:common"
+    ],
+
     enable_common_lib_starlark_only_filter = select({
         "//tensorflow:windows": False,
         "//tensorflow:macos": False,

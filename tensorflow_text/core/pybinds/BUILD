@@ -44,6 +44,8 @@ pybind_extension(
     ],
     deps = [
         "@pybind11",
+        "@flatbuffers",
+        "@icu//:common",
         # lite:framework tensorflow dep,
         # lite/c:common tensorflow dep,
         # lite/kernels:builtin_ops tensorflow dep,
