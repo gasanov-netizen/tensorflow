@@ -229,8 +229,8 @@ def tflite_cc_library(
 def extra_py_deps():
     return [
         "//tensorflow:tensorflow_py",
-        "@pypi_tensorflow_datasets//:pkg",
-        "@pypi_tensorflow_metadata//:pkg",
+        # "@pypi_tensorflow_datasets//:pkg",
+        # "@pypi_tensorflow_metadata//:pkg",
     ]
 
 def _py_deps_profile_impl(ctx):
