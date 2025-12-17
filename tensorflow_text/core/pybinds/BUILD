@@ -51,8 +51,6 @@ pybind_extension(
         # lite/c:common tensorflow dep,
         # lite/kernels:builtin_ops tensorflow dep,
         "//tensorflow_text/core/kernels:tflite_ops",
-        "@flatbuffers",
-        "@icu//:common",
     ],
 )
 

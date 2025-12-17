@@ -202,10 +202,10 @@ cc_test(
 )
 
 tf_cc_library(
-    name = "fast_bert_normalizer",
-    hdrs = ["fast_bert_normalizer.h"],
-    deps = [
-        "@flatbuffers", # TODO: check if it is necessary
+    name="fast_bert_normalizer",
+    hdrs=["fast_bert_normalizer.h"],
+    deps=[
+        "@flatbuffers",  # TODO: check if it is necessary
         ":darts_clone_trie_builder",
         ":darts_clone_trie_wrapper",
         ":fast_bert_normalizer_model",
@@ -1032,8 +1032,9 @@ cc_library(
     hdrs=["text_kernels_test_util.h"],
     deps=[
         "@com_google_googletest//:gtest",
-        # tf:framework tensorflow dep,
-        # tf:testlib tensorflow dep,
+        "//tensorflow/core:framework",
+        "//tensorflow/core:test",
+        "//tensorflow/core:testlib",
     ],
 )
 
@@ -1052,9 +1053,9 @@ tflite_cc_library(
         "//tensorflow_text/core/kernels/sentencepiece:sp_headers",
     ],
     deps=[
-    deps = [
-        "@flatbuffers",
-        "@icu//:common",
+        # TODO: check if it is necessary
+        # "@flatbuffers",
+        # "@icu//:common",
         ":byte_splitter_tflite",
         ":fast_bert_normalizer_tflite",
         ":fast_wordpiece_tokenizer_tflite",

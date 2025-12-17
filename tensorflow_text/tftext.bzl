@@ -229,6 +229,7 @@ def tflite_cc_library(
 def extra_py_deps():
     return [
         "//tensorflow:tensorflow_py",
+        # TODO: looks like it is not needed for core functionality
         # "@pypi_tensorflow_datasets//:pkg",
         # "@pypi_tensorflow_metadata//:pkg",
     ]

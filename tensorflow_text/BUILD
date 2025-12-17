@@ -15,9 +15,9 @@ alias(
     actual="//tensorflow:libtensorflow_framework_import_lib",
 )
 
-cc_import(
+alias(
     name="libtensorflow_framework_so",
-    shared_library="//tensorflow:libtensorflow_framework_so_public",
+    actual="//tensorflow:libtensorflow_framework_import_lib",
 )
 
 
