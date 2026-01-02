@@ -235,6 +235,9 @@ tf_cc_library(
         ":darts_clone_trie_builder",
         ":fast_bert_normalizer",
         ":fast_bert_normalizer_model",
+        "@com_google_absl//absl/log",
+        # TODO: check if it should be added
+        "@com_google_absl//absl/log:check",
         "@com_google_absl//absl/memory",
         "@com_google_absl//absl/status",
         "@com_google_absl//absl/status:statusor",
@@ -1034,6 +1037,8 @@ cc_library(
         "@com_google_googletest//:gtest",
         # tf:framework tensorflow dep,
         # tf:testlib tensorflow dep,
+        "//tensorflow/core:framework",
+        "//tensorflow/core:testlib",
     ],
 )
 
