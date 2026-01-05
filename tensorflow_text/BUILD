@@ -276,6 +276,7 @@ py_test(
     srcs = ["python/ops/create_feature_bitmask_op_test.py"],
     deps = [
         ":create_feature_bitmask_op",
+        "//tensorflow/python:_pywrap_tensorflow",
         # python/framework:constant_op tensorflow dep,
         # python/framework:dtypes tensorflow dep,
         # python/framework:errors tensorflow dep,
