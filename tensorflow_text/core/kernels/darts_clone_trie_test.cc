@@ -11,7 +11,10 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
+#include "absl/status/status.h"
+#include "tensorflow/core/platform/status_matchers.h"
+#include "tensorflow/core/platform/statusor.h"
+#include "tensorflow/core/platform/test.h"
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include "tensorflow_text/core/kernels/darts_clone_trie_builder.h"
@@ -21,16 +24,16 @@ namespace tensorflow {
 namespace text {
 namespace trie_utils {
 
-using ::testing::status::StatusIs;
+using ::tensorflow::testing::StatusIs;
 
 TEST(DartsCloneTrieTest, CreateCursorPointToRootAndTryTraverseOneStep) {
   // The test vocabulary.
   std::vector<std::string> vocab_tokens{"def", "\xe1\xb8\x8aZZ", "Abc"};
 
   // Create the trie instance.
-  ASSERT_OK_AND_ASSIGN(std::vector<uint32_t> trie_array,
+  TF_ASSERT_OK_AND_ASSIGN(std::vector<uint32_t> trie_array,
                        BuildDartsCloneTrie(vocab_tokens));
-  ASSERT_OK_AND_ASSIGN(DartsCloneTrieWrapper trie,
+  TF_ASSERT_OK_AND_ASSIGN(DartsCloneTrieWrapper trie,
                        DartsCloneTrieWrapper::Create(trie_array.data()));
 
   DartsCloneTrieWrapper::TraversalCursor cursor;
@@ -53,9 +56,9 @@ TEST(DartsCloneTrieTest, CreateCursorAndTryTraverseSeveralSteps) {
   std::vector<std::string> vocab_tokens{"def", "\xe1\xb8\x8aZZ", "Abc"};
 
   // Create the trie instance.
-  ASSERT_OK_AND_ASSIGN(std::vector<uint32_t> trie_array,
+  TF_ASSERT_OK_AND_ASSIGN(std::vector<uint32_t> trie_array,
                        BuildDartsCloneTrie(vocab_tokens));
-  ASSERT_OK_AND_ASSIGN(DartsCloneTrieWrapper trie,
+  TF_ASSERT_OK_AND_ASSIGN(DartsCloneTrieWrapper trie,
                        DartsCloneTrieWrapper::Create(trie_array.data()));
 
   DartsCloneTrieWrapper::TraversalCursor cursor;
@@ -73,9 +76,9 @@ TEST(DartsCloneTrieTest, TraversePathNotExisted) {
   std::vector<std::string> vocab_tokens{"def", "\xe1\xb8\x8aZZ", "Abc"};
 
   // Create the trie instance.
-  ASSERT_OK_AND_ASSIGN(std::vector<uint32_t> trie_array,
+  TF_ASSERT_OK_AND_ASSIGN(std::vector<uint32_t> trie_array,
                        BuildDartsCloneTrie(vocab_tokens));
-  ASSERT_OK_AND_ASSIGN(DartsCloneTrieWrapper trie,
+  TF_ASSERT_OK_AND_ASSIGN(DartsCloneTrieWrapper trie,
                        DartsCloneTrieWrapper::Create(trie_array.data()));
 
   DartsCloneTrieWrapper::TraversalCursor cursor;
@@ -91,9 +94,9 @@ TEST(DartsCloneTrieTest, TraverseOnUtf8Path) {
   std::vector<std::string> vocab_tokens{"def", "\xe1\xb8\x8aZZ", "Abc"};
 
   // Create the trie instance.
-  ASSERT_OK_AND_ASSIGN(std::vector<uint32_t> trie_array,
+  TF_ASSERT_OK_AND_ASSIGN(std::vector<uint32_t> trie_array,
                        BuildDartsCloneTrie(vocab_tokens));
-  ASSERT_OK_AND_ASSIGN(DartsCloneTrieWrapper trie,
+  TF_ASSERT_OK_AND_ASSIGN(DartsCloneTrieWrapper trie,
                        DartsCloneTrieWrapper::Create(trie_array.data()));
 
   DartsCloneTrieWrapper::TraversalCursor cursor;
@@ -112,9 +115,9 @@ TEST(DartsCloneTrieTest, TraverseOnPartialUtf8Path) {
   std::vector<std::string> vocab_tokens{"def", "\xe1\xb8\x8aZZ", "Abc"};
 
   // Create the trie instance.
-  ASSERT_OK_AND_ASSIGN(std::vector<uint32_t> trie_array,
+  TF_ASSERT_OK_AND_ASSIGN(std::vector<uint32_t> trie_array,
                        BuildDartsCloneTrie(vocab_tokens));
-  ASSERT_OK_AND_ASSIGN(DartsCloneTrieWrapper trie,
+  TF_ASSERT_OK_AND_ASSIGN(DartsCloneTrieWrapper trie,
                        DartsCloneTrieWrapper::Create(trie_array.data()));
 
   DartsCloneTrieWrapper::TraversalCursor cursor;
@@ -132,9 +135,9 @@ TEST(DartsCloneTrieTest, TraverseOnUtf8PathNotExisted) {
   std::vector<std::string> vocab_tokens{"def", "\xe1\xb8\x8aZZ", "Abc"};
 
   // Create the trie instance.
-  ASSERT_OK_AND_ASSIGN(std::vector<uint32_t> trie_array,
+  TF_ASSERT_OK_AND_ASSIGN(std::vector<uint32_t> trie_array,
                        BuildDartsCloneTrie(vocab_tokens));
-  ASSERT_OK_AND_ASSIGN(DartsCloneTrieWrapper trie,
+  TF_ASSERT_OK_AND_ASSIGN(DartsCloneTrieWrapper trie,
                        DartsCloneTrieWrapper::Create(trie_array.data()));
 
   DartsCloneTrieWrapper::TraversalCursor cursor;
@@ -152,7 +155,7 @@ TEST(DartsCloneTrieBuildError, KeysValuesSizeDifferent) {
 
   // Create the trie instance.
   ASSERT_THAT(BuildDartsCloneTrie(keys, values),
-              StatusIs(util::error::INVALID_ARGUMENT));
+              StatusIs(absl::StatusCode::kInvalidArgument));
 }
 
 TEST(DartsCloneTrieBuildError, DuplicatedKeys) {
@@ -161,7 +164,7 @@ TEST(DartsCloneTrieBuildError, DuplicatedKeys) {
 
   // Create the trie instance.
   ASSERT_THAT(BuildDartsCloneTrie(vocab_tokens),
-              StatusIs(util::error::INVALID_ARGUMENT));
+              StatusIs(absl::StatusCode::kInvalidArgument));
 }
 
 TEST(DartsCloneTrieBuildError, EmptyStringsInKeys) {
@@ -170,7 +173,7 @@ TEST(DartsCloneTrieBuildError, EmptyStringsInKeys) {
 
   // Create the trie instance.
   ASSERT_THAT(BuildDartsCloneTrie(vocab_tokens),
-              StatusIs(util::error::INVALID_ARGUMENT));
+              StatusIs(absl::StatusCode::kInvalidArgument));
 }
 
 TEST(DartsCloneTrieBuildError, NegativeValues) {
@@ -180,7 +183,7 @@ TEST(DartsCloneTrieBuildError, NegativeValues) {
 
   // Create the trie instance.
   ASSERT_THAT(BuildDartsCloneTrie(vocab_tokens, vocab_values),
-              StatusIs(util::error::INVALID_ARGUMENT));
+              StatusIs(absl::StatusCode::kInvalidArgument));
 }
 
 }  // namespace trie_utils
