@@ -14,6 +14,9 @@
 
 #include "tensorflow_text/core/kernels/fast_wordpiece_tokenizer_utils.h"
 
+#include "tensorflow/core/platform/statusor.h"
+#include "tensorflow/core/platform/test.h"
+
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
@@ -78,11 +81,11 @@ const std::vector<TokenSpec>& GetTokenSpecs() {
   return kSpecs;
 }
 
-using TokenEncodingDecodingTest = testing::TestWithParam<TokenSpec>;
+using TokenEncodingDecodingTest = ::testing::TestWithParam<TokenSpec>;
 
 TEST_P(TokenEncodingDecodingTest, GeneralTest) {
   const TokenSpec& spec = GetParam();
-  ASSERT_OK_AND_ASSIGN(
+  TF_ASSERT_OK_AND_ASSIGN(
       auto encoded_value,
       EncodeToken(spec.token_id, spec.token_length, spec.is_suffix_token));
   EXPECT_THAT(GetTokenId(encoded_value), spec.token_id);
@@ -91,7 +94,7 @@ TEST_P(TokenEncodingDecodingTest, GeneralTest) {
 }
 
 INSTANTIATE_TEST_SUITE_P(TestTokenEncodingDecoding, TokenEncodingDecodingTest,
-                         testing::ValuesIn(GetTokenSpecs()));
+                         ::testing::ValuesIn(GetTokenSpecs()));
 
 struct FailurePopListSpec {
   friend std::ostream& operator<<(std::ostream& os,
@@ -133,7 +136,7 @@ const std::vector<FailurePopListSpec>& GetFailurePopListSpecs() {
 }
 
 using FailurePopListEncodingDecodingTest =
-    testing::TestWithParam<FailurePopListSpec>;
+    ::testing::TestWithParam<FailurePopListSpec>;
 
 TEST_P(FailurePopListEncodingDecodingTest, GeneralTest) {
   const FailurePopListSpec& spec = GetParam();
@@ -146,7 +149,7 @@ TEST_P(FailurePopListEncodingDecodingTest, GeneralTest) {
 
 INSTANTIATE_TEST_SUITE_P(TestFailurePopListEncodingDecoding,
                          FailurePopListEncodingDecodingTest,
-                         testing::ValuesIn(GetFailurePopListSpecs()));
+                         ::testing::ValuesIn(GetFailurePopListSpecs()));
 
 }  // namespace
 }  // namespace fast_wordpiece_tokenizer_utils

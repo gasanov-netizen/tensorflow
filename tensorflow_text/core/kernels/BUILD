@@ -542,7 +542,9 @@ cc_test(
     srcs = ["fast_wordpiece_tokenizer_utils_test.cc"],
     deps = [
         ":fast_wordpiece_tokenizer_utils",
-        "@com_google_googletest//:gtest_main",
+        "//tensorflow/core/platform:statusor",
+        "//tensorflow/core/platform:test",
+        "//tensorflow/core/platform:test_main",
     ],
 )
 
