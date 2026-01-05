@@ -359,8 +359,12 @@ cc_test(
     deps = [
         ":darts_clone_trie_builder",
         ":darts_clone_trie_wrapper",
-        "@com_google_absl//absl/status",
-        "@com_google_googletest//:gtest_main",
+        "//tensorflow/core/platform:status_matchers",
+        "//tensorflow/core/platform:statusor",
+        "//tensorflow/core/platform:test",
+        "//tensorflow/core/platform:test_main",
+        "@eigen_archive//:eigen3",
+        "@ml_dtypes_py//ml_dtypes:float8",
     ],
 )
 
