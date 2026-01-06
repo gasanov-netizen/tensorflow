@@ -656,6 +656,8 @@ cc_test(
         # tf/framework:shape_inference_testutil tensorflow dep,
         # tf/framework:tensor_testutil tensorflow dep,
         "//tensorflow_text:ngrams_op_cc",
+        "//tensorflow/core:test_main",
+        "//tensorflow/core:testlib",
     ],
 )
 
