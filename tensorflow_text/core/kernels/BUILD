@@ -854,6 +854,8 @@ cc_test(
     srcs = ["rouge_l_kernel_test.cc"],
     deps = [
         ":rouge_l_kernel",
+        "//tensorflow/core:test_main",
+        "//tensorflow/core:testlib",
         # tf:framework tensorflow dep,
         # tf:test tensorflow dep,
         # tf:test_main tensorflow dep,
