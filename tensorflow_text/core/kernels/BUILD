@@ -725,6 +725,8 @@ cc_test(
         ":ragged_tensor_to_tensor_tflite",
         "@com_google_googletest//:gtest_main",
         "@flatbuffers",
+        "@FP16",
+        "//tensorflow/lite/kernels:test_util",
         # lite:framework tensorflow dep,
         # lite/c:common tensorflow dep,
         # lite/kernels:test_util tensorflow dep,
