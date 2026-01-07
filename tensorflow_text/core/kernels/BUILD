@@ -1022,6 +1022,7 @@ cc_test(
     deps = [
         ":spanning_tree_iterator",
         "@com_google_googletest//:gtest_main",
+        "//tensorflow/core:testlib",
         # tf:lib tensorflow dep,
     ],
 )
