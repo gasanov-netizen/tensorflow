@@ -272,8 +272,7 @@ cc_test(
     deps = [
         ":model_converter",
         ":optimized_decoder",
-        "//file/base:path",
-        "//file/localfile",
+        "//tensorflow/core/platform:env",
         "@com_google_googletest//:gtest_main",
         "@com_google_absl//absl/strings:str_format",
         "@com_google_sentencepiece//:sentencepiece_cc_proto",

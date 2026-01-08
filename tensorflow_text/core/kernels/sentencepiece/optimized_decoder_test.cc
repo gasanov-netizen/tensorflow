@@ -29,16 +29,16 @@ limitations under the License.
 
 #include "tensorflow_text/core/kernels/sentencepiece/optimized_decoder.h"
 
-#include <fstream>
-
-#include "file/base/path.h"
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
+
+#include <fstream>
+
 #include "absl/strings/str_format.h"
-#include "src/sentencepiece.proto.h"
+#include "src/sentencepiece.pb.h"
 #include "src/sentencepiece_processor.h"
 #include "tensorflow/core/platform/env.h"
-#include "tensorflow/lite/kernels/test_util.h"
+#include "tensorflow/core/platform/path.h"
 #include "tensorflow_text/core/kernels/sentencepiece/model_converter.h"
 
 namespace tensorflow {
@@ -72,14 +72,13 @@ absl::Status StdReadFileToString(const std::string& filepath,
 namespace {
 
 static char kConfigFilePath[] =
-    "/tensorflow_text/python/ops/test_data/"
+    "tensorflow_text/python/ops/test_data/"
     "fast_sentencepiece.model";
 
 TEST(OptimizedEncoder, ConfigConverter) {
   std::string config;
 
-  auto status = internal::TFReadFileToString(
-      file::JoinPath(::testing::SrcDir(), kConfigFilePath), &config);
+  auto status = internal::TFReadFileToString(kConfigFilePath, &config);
   ASSERT_TRUE(status.ok());
 
   ::sentencepiece::SentencePieceProcessor processor;
