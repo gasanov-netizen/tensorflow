@@ -21,6 +21,9 @@ cc_test(
         # tf:test_main tensorflow dep,
         # tf/framework:shape_inference_testutil tensorflow dep,
         "//tensorflow_text/core/kernels:byte_splitter_kernel",
+        "//tensorflow/core:testlib",
+        "//tensorflow/lite/kernels/shim:tf_op_shim",
+        "@com_google_googletest//:gtest_main",
     ],
 )
 
