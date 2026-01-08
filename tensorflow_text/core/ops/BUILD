@@ -78,9 +78,6 @@ cc_test(
         # tf:test_main tensorflow dep,
         # tf/framework:shape_inference_testutil tensorflow dep,
         "//tensorflow_text/core/kernels:sentence_fragmenter_v2_kernel",
-        "//tensorflow/core:testlib",
-        "//tensorflow/lite/kernels/shim:tf_op_shim",
-        "@com_google_googletest//:gtest_main",
     ],
 )
 
@@ -98,6 +95,9 @@ cc_test(
         # tf/framework:shape_inference_testutil tensorflow dep,
         # tf/framework:tensor_testutil tensorflow dep,
         "//tensorflow_text/core/kernels:round_robin_trimmer_kernel",
+        "//tensorflow/core:testlib",
+        "//tensorflow/lite/kernels/shim:tf_op_shim",
+        "@com_google_googletest//:gtest_main",
     ],
 )
 
