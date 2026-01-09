@@ -6,8 +6,8 @@ load("@rules_cc//cc:cc_test.bzl", "cc_test")
 
 # Placeholder: load proto_library
 load("//tensorflow_text:tftext.bzl", "tf_cc_library", "tflite_cc_library")
-# [internal] load cc_proto_library.bzl
 
+load("//tensorflow:tensorflow.bzl", "tf_cc_test")
 licenses(["notice"])
 
 # Visibility rules
@@ -205,7 +205,7 @@ tf_cc_library(
     name = "fast_bert_normalizer",
     hdrs = ["fast_bert_normalizer.h"],
     deps = [
-        "@flatbuffers", # TODO: check if it is necessary
+        "@flatbuffers",  # TODO: check if it is necessary
         ":darts_clone_trie_builder",
         ":darts_clone_trie_wrapper",
         ":fast_bert_normalizer_model",
@@ -236,7 +236,6 @@ tf_cc_library(
         ":fast_bert_normalizer",
         ":fast_bert_normalizer_model",
         "@com_google_absl//absl/log",
-        # TODO: check if it should be added
         "@com_google_absl//absl/log:check",
         "@com_google_absl//absl/memory",
         "@com_google_absl//absl/status",
@@ -250,14 +249,19 @@ tf_cc_library(
     ],
 )
 
-cc_test(
+tf_cc_test(
     name = "fast_bert_normalizer_test",
     size = "small",
     srcs = ["fast_bert_normalizer_test.cc"],
     deps = [
         ":fast_bert_normalizer",
         ":fast_bert_normalizer_model_builder",
-        "@com_google_googletest//:gtest_main",
+        "//tensorflow/core:lib",
+        "//tensorflow/core:test_main",
+        "//third_party/icu/data:icu_normalization_data",
+        "@icu//:nfkc_cf",
+        "@icu//:common",
+        "@icu//:nfkc",
     ],
 )
 
@@ -366,7 +370,6 @@ cc_test(
         "//tensorflow/core/platform:statusor",
         "//tensorflow/core/platform:test",
         "//tensorflow/core/platform:test_main",
-
     ],
 )
 
@@ -420,7 +423,11 @@ cc_test(
         ":fast_wordpiece_tokenizer_model_builder",
         "@com_google_googletest//:gtest_main",
         "@com_google_absl//absl/flags:flag",
-        "//third_party/icu:headers",
+        "@icu//:common",
+        "//tensorflow/core/platform:statusor",
+        "//tensorflow/core/platform:test",
+        "//tensorflow/core/platform:test_main",
+        "//tensorflow/core/platform:env",
         # tf:lib tensorflow dep,
     ],
 )
@@ -1253,6 +1260,7 @@ cc_test(
         ":whitespace_tokenizer_config_builder",
         "@com_google_googletest//:gtest_main",
         "@icu//:common",
+        "//tensorflow/core:testlib",
         # tf:lib tensorflow dep,
         # tf:test_main tensorflow dep,
     ],
