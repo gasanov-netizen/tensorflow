@@ -8,12 +8,12 @@ load("@rules_cc//cc:cc_test.bzl", "cc_test")
 load("//tensorflow_text:tftext.bzl", "tf_cc_library", "tflite_cc_library")
 # [internal] load cc_proto_library.bzl
 
-licenses(["notice"])
+#licenses(["notice"])
 
 # Visibility rules
 package(default_visibility = ["//visibility:public"])
 
-exports_files(["LICENSE"])
+#exports_files(["LICENSE"])
 
 cc_library(
     name = "boise_offset_converter",
