@@ -8,6 +8,7 @@ load("@rules_cc//cc:cc_test.bzl", "cc_test")
 load("//tensorflow_text:tftext.bzl", "tf_cc_library", "tflite_cc_library")
 # [internal] load cc_proto_library.bzl
 
+#TODO:(rg) uncomment this
 #licenses(["notice"])
 
 # Visibility rules
@@ -1030,6 +1031,7 @@ cc_library(
     hdrs = ["text_kernels_test_util.h"],
     deps = [
         "@com_google_googletest//:gtest",
+        "//tensorflow/core:testlib",
         # tf:framework tensorflow dep,
         # tf:testlib tensorflow dep,
     ],
