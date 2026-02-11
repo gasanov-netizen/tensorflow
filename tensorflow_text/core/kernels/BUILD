@@ -8,12 +8,13 @@ load("@rules_cc//cc:cc_test.bzl", "cc_test")
 load("//tensorflow_text:tftext.bzl", "tf_cc_library", "tflite_cc_library")
 # [internal] load cc_proto_library.bzl
 
-licenses(["notice"])
+#TODO:(rg) uncomment this
+#licenses(["notice"])
 
 # Visibility rules
 package(default_visibility = ["//visibility:public"])
 
-exports_files(["LICENSE"])
+#exports_files(["LICENSE"])
 
 cc_library(
     name = "boise_offset_converter",
@@ -572,6 +573,7 @@ cc_test(
         ":mst_solver",
         "@com_google_googletest//:gtest",
         "@com_google_googletest//:gtest_main",
+        "//tensorflow/core:testlib",
         # tf:test tensorflow dep,
     ],
 )
@@ -1030,6 +1032,7 @@ cc_library(
     hdrs = ["text_kernels_test_util.h"],
     deps = [
         "@com_google_googletest//:gtest",
+        "//tensorflow/core:testlib",
         # tf:framework tensorflow dep,
         # tf:testlib tensorflow dep,
     ],

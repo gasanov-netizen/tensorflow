@@ -1,11 +1,12 @@
 """
 Build rules for open source tf.text libraries.
 """
+
 load(
-    "@local_xla//third_party/py/rules_pywrap:pywrap.default.bzl", 
+    "@xla//third_party/py/rules_pywrap:pywrap.default.bzl",
     _pybind_extension = "pybind_extension",
     _pywrap_binaries = "pywrap_binaries",
-    _pywrap_library = "pywrap_library"
+    _pywrap_library = "pywrap_library",
 )
 
 def py_tf_text_library(
@@ -245,7 +246,7 @@ def extra_py_deps():
     ]
 
 def py_library(name, lazy_imports = False, **kwargs):
-    _ = lazy_imports   # buildifier: disable=unused-variable
+    _ = lazy_imports  # buildifier: disable=unused-variable
     native.py_library(
         name = name,
         **kwargs
@@ -255,13 +256,14 @@ def pybind_extension(name, deps = None, **kwargs):
     deps = deps or []
     deps = deps + ["@pybind11//:pybind11"]
     _pybind_extension(
-        name=name,
-        deps=deps,
-        **kwargs,
+        name = name,
+        deps = deps,
+        **kwargs
     )
-    
+
 def if_pywrap(if_true = None, if_false = None):
     _ = (if_false,)  # buildifier: disable=unused-variable
+
     # Always use pywrap.
     return if_true or []
 
