@@ -849,6 +849,8 @@ cc_test(
         # tf:testlib tensorflow dep,
         # tf/kernels:ops_testutil tensorflow dep,
         "//tensorflow_text:text_similarity_metric_ops_cc",
+        "//tensorflow/core:test_main",
+        "//tensorflow/core:testlib",
     ],
 )
 
