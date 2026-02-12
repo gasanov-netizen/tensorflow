@@ -1409,5 +1409,7 @@ cc_test(
         # tf:testlib tensorflow dep,
         # tf/kernels:ops_testutil tensorflow dep,
         "//tensorflow_text:wordpiece_tokenizer_cc",
+        "//tensorflow/core:testlib",
+        "//tensorflow/core:test_main",
     ],
 )
