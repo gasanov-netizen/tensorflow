@@ -22,8 +22,8 @@
 #include "absl/strings/match.h"
 #include "absl/strings/str_join.h"
 #include "absl/strings/string_view.h"
-#include "icu4c/source/common/unicode/uchar.h"
-#include "icu4c/source/common/unicode/utf8.h"
+#include "unicode/uchar.h"
+#include "unicode/utf8.h"
 #include "tensorflow/lite/kernels/shim/status_macros.h"
 #include "tensorflow_text/core/kernels/fast_wordpiece_tokenizer_utils.h"
 

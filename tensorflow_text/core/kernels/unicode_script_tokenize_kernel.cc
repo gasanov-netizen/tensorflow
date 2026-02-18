@@ -16,9 +16,9 @@
 
 #include <vector>
 
-#include "icu4c/source/common/unicode/errorcode.h"
-#include "icu4c/source/common/unicode/uchar.h"
-#include "icu4c/source/common/unicode/uscript.h"
+#include "unicode/errorcode.h"
+#include "unicode/uchar.h"
+#include "unicode/uscript.h"
 #include "tensorflow/core/framework/kernel_def_builder.h"
 #include "tensorflow/core/framework/lookup_interface.h"
 #include "tensorflow/core/framework/op_kernel.h"

@@ -17,8 +17,8 @@
 #include <vector>
 
 #include "absl/strings/str_cat.h"
-#include "icu4c/source/common/unicode/uchar.h"
-#include "icu4c/source/common/unicode/ucnv_err.h"
+#include "unicode/uchar.h"
+#include "unicode/ucnv_err.h"
 #include "tensorflow/core/framework/op_kernel.h"
 #include "tensorflow/core/framework/tensor_types.h"
 #include "tensorflow/core/framework/types.h"

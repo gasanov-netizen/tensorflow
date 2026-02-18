@@ -19,9 +19,9 @@
 
 #include "absl/status/status.h"
 #include "absl/strings/str_cat.h"
-#include "icu4c/source/common/unicode/uchar.h"
-#include "icu4c/source/common/unicode/umachine.h"
-#include "icu4c/source/common/unicode/utf8.h"
+#include "unicode/uchar.h"
+#include "unicode/umachine.h"
+#include "unicode/utf8.h"
 #include "tensorflow/core/framework/op_kernel.h"
 #include "tensorflow/core/framework/tensor.h"
 #include "tensorflow/core/framework/tensor_shape.h"

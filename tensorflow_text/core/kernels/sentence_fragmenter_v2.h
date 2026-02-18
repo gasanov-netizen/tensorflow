@@ -38,7 +38,7 @@
 
 #include "absl/status/status.h"
 #include "absl/strings/string_view.h"
-#include "icu4c/source/common/unicode/utypes.h"
+#include "unicode/utypes.h"
 #include "tensorflow/core/lib/core/status.h"
 
 namespace tensorflow {

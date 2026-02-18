@@ -414,7 +414,9 @@ cc_test(
         ":fast_wordpiece_tokenizer_model_builder",
         "@com_google_googletest//:gtest_main",
         "@com_google_absl//absl/flags:flag",
-        "@icu//:headers",
+        "@icu//:icuuc",
+        ":text_kernels_test_util",
+        "@flatbuffers",
         # tf:lib tensorflow dep,
     ],
 )
@@ -1036,6 +1038,7 @@ cc_library(
     hdrs = ["text_kernels_test_util.h"],
     deps = [
         "@com_google_googletest//:gtest",
+        "//tensorflow/core:framework",
         "//tensorflow/core:testlib",
         # tf:framework tensorflow dep,
         # tf:testlib tensorflow dep,

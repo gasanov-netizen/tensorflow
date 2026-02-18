@@ -17,9 +17,9 @@
 
 #include <string>
 #include "absl/strings/string_view.h"
-#include "icu4c/source/common/unicode/ucnv.h"
-#include "icu4c/source/common/unicode/ucnv_err.h"
-#include "icu4c/source/common/unicode/utypes.h"
+#include "unicode/ucnv.h"
+#include "unicode/ucnv_err.h"
+#include "unicode/utypes.h"
 #include "tensorflow/core/lib/core/status.h"
 
 namespace tensorflow {

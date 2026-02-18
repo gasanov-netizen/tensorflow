@@ -173,6 +173,22 @@ def _tf_repositories():
     # c) TF's automation will then upload the mirrored archive. For more information as well as
     # how to manually upload a mirror if necessary, see go/tf_mirror_md.
 
+    tf_http_archive(
+        name = "darts_clone",
+        build_file = "//third_party:darts_clone.BUILD",
+        sha256 = "4a562824ec2fbb0ef7bd0058d9f73300173d20757b33bb69baa7e50349f65820",
+        strip_prefix = "darts-clone-e40ce4627526985a7767444b6ed6893ab6ff8983",
+        urls = tf_mirror_urls("https://github.com/s-yata/darts-clone/archive/e40ce4627526985a7767444b6ed6893ab6ff8983.tar.gz"),
+    )
+
+    tf_http_archive(
+        name = "cppitertools",
+        build_file = "//third_party:cppitertools.BUILD",
+        sha256 = "ba28a077e5099f72cf9e8efab2ced729214ab745a26cc21a1cebb81defd6c2d0",
+        strip_prefix = "cppitertools-2.0",
+        urls = tf_mirror_urls("https://github.com/ryanhaining/cppitertools/archive/v2.0.tar.gz"),
+    )
+
     # LINT.IfChange(xnnpack)
     tf_http_archive(
         name = "XNNPACK",
@@ -442,7 +458,11 @@ def _tf_repositories():
         # $ git diff > <client-root>/third_party/tensorflow/third_party/googletest/googletest.patch
         #
         # The patch path is relative to third_party/tensorflow.
-        patch_file = ["@xla//third_party/googletest:googletest.patch"],
+        patch_file = [
+            "@xla//third_party/googletest:googletest.patch",
+            "@xla//third_party/googletest:0001-Add-ASSERT_OK-EXPECT_OK-ASSERT_OK_AND_ASSIGN-macros.patch",
+            "@xla//third_party/googletest:0002-Rename-dependencies-for-workspace.bzl-build.patch",
+        ],
         urls = tf_mirror_urls("https://github.com/google/googletest/archive/28e9d1f26771c6517c3b4be10254887673c940189.zip"),
     )
 

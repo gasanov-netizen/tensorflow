@@ -57,6 +57,6 @@ py_test(
         ":wordpiece_tokenizer_learner_lib",
         "@absl_py//absl/testing:absltest",
         "@pypi//numpy:pkg",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
     ],
 )

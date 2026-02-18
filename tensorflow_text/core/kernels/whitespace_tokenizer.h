@@ -19,7 +19,7 @@
 #include <vector>
 
 #include "absl/strings/string_view.h"
-#include "icu4c/source/common/unicode/umachine.h"
+#include "unicode/umachine.h"
 
 namespace tensorflow {
 namespace text {
