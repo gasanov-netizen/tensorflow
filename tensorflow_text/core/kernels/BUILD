@@ -646,6 +646,8 @@ cc_test(
         # tf/framework:shape_inference_testutil tensorflow dep,
         # tf/framework:tensor_testutil tensorflow dep,
         "//tensorflow_text:ngrams_op_cc",
+        "//tensorflow/core:test_main",
+        "//tensorflow/core:testlib",
     ],
 )
 
@@ -847,6 +849,8 @@ cc_test(
         # tf:testlib tensorflow dep,
         # tf/kernels:ops_testutil tensorflow dep,
         "//tensorflow_text:text_similarity_metric_ops_cc",
+        "//tensorflow/core:test_main",
+        "//tensorflow/core:testlib",
     ],
 )
 
@@ -1277,6 +1281,7 @@ cc_test(
         "@com_google_absl//absl/flags:flag",
         "@com_google_absl//absl/status",
         "@com_google_absl//absl/status:statusor",
+        "//tensorflow/core/platform:env",
         # tf:lib tensorflow dep,
         # tf:test_main tensorflow dep,
     ],
@@ -1407,5 +1412,7 @@ cc_test(
         # tf:testlib tensorflow dep,
         # tf/kernels:ops_testutil tensorflow dep,
         "//tensorflow_text:wordpiece_tokenizer_cc",
+        "//tensorflow/core:testlib",
+        "//tensorflow/core:test_main",
     ],
 )

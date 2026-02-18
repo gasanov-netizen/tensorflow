@@ -155,14 +155,13 @@ def tf_cc_library(
     oss_deps = oss_deps + _dedupe(deps, "@com_google_absl//absl/strings:cord")
     oss_deps = oss_deps + _dedupe(deps, "@com_google_absl//absl/time")
     oss_deps = oss_deps + _dedupe(deps, "@com_google_absl//absl/types:variant")
-    oss_deps = oss_deps + _dedupe(deps, "@com_google_absl//absl/utility:if_constexpr")
     deps += select({
         "@org_tensorflow//tensorflow:mobile": [
             "@org_tensorflow//tensorflow/core:portable_tensorflow_lib_lite",
         ],
         "//conditions:default": [
-            "@release_or_nightly//:tensorflow_libtensorflow_framework",
-            "@release_or_nightly//:tensorflow_tf_header_lib",
+            "//tensorflow/core:framework",
+            "//tensorflow/core:lib",
         ] + tf_deps + oss_deps,
     })
     native.cc_library(
@@ -222,8 +221,8 @@ def tflite_cc_library(
             "@org_tensorflow//tensorflow/core:portable_tensorflow_lib_lite",
         ],
         "//conditions:default": [
-            "@release_or_nightly//:tensorflow_libtensorflow_framework",
-            "@release_or_nightly//:tensorflow_tf_header_lib",
+            "//tensorflow/core:framework",
+            "//tensorflow/core:lib",
         ] + oss_deps,
     })
     native.cc_library(
@@ -239,8 +238,8 @@ def tflite_cc_library(
 
 def extra_py_deps():
     return [
-        "@release_or_nightly//:tensorflow_pkg",
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",
+        "//tensorflow/python/keras:keras",
         "@pypi_tensorflow_datasets//:pkg",
         "@pypi_tensorflow_metadata//:pkg",
     ]
