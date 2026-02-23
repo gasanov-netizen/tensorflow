@@ -1,0 +1,75 @@
+diff -ru a/source/stubdata/BUILD.bazel b/source/stubdata/BUILD.bazel
+--- a/source/stubdata/BUILD.bazel
++++ b/source/stubdata/BUILD.bazel
+@@ -16,7 +16,7 @@
+     name = "stubdata",
+     srcs = ["stubdata.cpp"],
+     hdrs = ["stubdata.h"],
+-    deps = ["//icu4c/source/common:headers"],
++    deps = ["//source/common:headers"],
+     local_defines = [
+         "U_COMMON_IMPLEMENTATION",
+     ],
+diff -ru a/source/common/BUILD.bazel b/source/common/BUILD.bazel
+--- a/source/common/BUILD.bazel
++++ b/source/common/BUILD.bazel
+@@ -1,3 +1,55 @@
++# Monolithic ICU common library target for TensorFlow.
++# This compiles all source files in source/common/ into a single library,
++# providing full ICU common functionality (including ucnv, udata, etc.)
++# that the fine-grained modular targets below do not fully cover.
++#
++# TensorFlow and TensorFlow Text depend on this via @icu//:common and
++# @icu//:icuuc aliases defined in third_party/icu/icu.BUILD.
++
++cc_library(
++    name = "icuuc",
++    srcs = glob(
++        [
++            "*.c",
++            "*.cpp",
++        ],
++        exclude = [
++            "*_test.cpp",
++        ],
++    ),
++    hdrs = glob([
++        "unicode/*.h",
++        "*.h",
++    ]),
++    includes = ["."],
++    copts = [
++        "-DU_COMMON_IMPLEMENTATION",
++        "-DU_HAVE_STD_ATOMICS",
++    ] + select({
++        "@platforms//os:android": [
++            "-fdata-sections",
++            "-DU_HAVE_NL_LANGINFO_CODESET=0",
++            "-Wno-deprecated-declarations",
++        ],
++        "@platforms//os:macos": [
++            "-Wno-shorten-64-to-32",
++            "-Wno-unused-variable",
++        ],
++        "@platforms//os:ios": [
++            "-Wno-shorten-64-to-32",
++            "-Wno-unused-variable",
++        ],
++        "@platforms//os:windows": [
++            "/utf-8",
++            "/DLOCALE_ALLOW_NEUTRAL_NAMES=0",
++        ],
++        "//conditions:default": [],
++    }),
++    tags = ["requires-rtti"],
++    visibility = ["//visibility:public"],
++    deps = [
++        "//source/stubdata",
++    ],
++)
++
++# ---- Original ICU 77.1 modular targets below ----
++
+ load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
+ 
+ package(
