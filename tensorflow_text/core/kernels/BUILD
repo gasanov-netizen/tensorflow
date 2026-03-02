@@ -240,7 +240,8 @@ tf_cc_library(
         "@com_google_absl//absl/status:statusor",
         "@com_google_absl//absl/strings",
         "@icu//:common",
-        "@icu//:nfkc_cf",  # Needed for NFKC_Casefold Unicode Normalization form.
+        "@icu//:nfkc",  # Needed for NFKC_Casefold Unicode Normalization form.
+        "//third_party/icu/data:conversion_data",
         "@com_googlesource_code_re2//:re2",
         # lite/kernels/shim:status_macros tensorflow dep,
     ],
@@ -253,6 +254,7 @@ cc_test(
     deps = [
         ":fast_bert_normalizer",
         ":fast_bert_normalizer_model_builder",
+        "@com_google_absl//absl/strings",
         "@com_google_googletest//:gtest_main",
     ],
 )
@@ -689,7 +691,6 @@ tf_cc_library(
         ":edit_changes_cc_proto",
         "@com_google_absl//absl/strings",
         "@icu//:nfkc",
-        "@icu//:nfkc_cf",
     ],
 )
 

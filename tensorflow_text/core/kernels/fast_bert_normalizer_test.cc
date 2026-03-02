@@ -16,6 +16,8 @@
 
 #include <memory>
 
+#include "absl/strings/str_cat.h"
+#include "absl/strings/str_join.h"
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include "tensorflow_text/core/kernels/fast_bert_normalizer_model_builder.h"
