@@ -192,7 +192,6 @@ def _tf_repositories():
     tf_http_archive(
         name = "com_google_sentencepiece",
         build_file = "//third_party/sentencepiece:BUILD",
-        patch_cmds = ["-p1"],
         patch_file = ["//third_party/sentencepiece:sp.patch"],
         sha256 = "8409b0126ebd62b256c685d5757150cf7fcb2b92a2f2b98efb3f38fc36719754",
         strip_prefix = "sentencepiece-0.1.96",

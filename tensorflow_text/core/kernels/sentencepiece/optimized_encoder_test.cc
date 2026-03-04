@@ -31,12 +31,12 @@ limitations under the License.
 
 #include <fstream>
 
-#include "file/base/path.h"
+#include "tensorflow/core/platform/path.h"
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include "absl/status/status.h"
 #include "absl/strings/str_format.h"
-#include "src/sentencepiece.proto.h"
+#include "src/sentencepiece.pb.h"
 #include "src/sentencepiece_processor.h"
 #include "tensorflow/core/platform/env.h"
 #include "tensorflow/lite/kernels/test_util.h"
@@ -74,7 +74,7 @@ absl::Status StdReadFileToString(const std::string& filepath,
 namespace {
 
 static char kConfigFilePath[] =
-    "/tensorflow_text/python/ops/test_data/"
+    "org_tensorflow/tensorflow_text/python/ops/test_data/"
     "fast_sentencepiece.model";
 
 TEST(OptimizedEncoder, NormalizeStringWhitestpaces) {
@@ -161,7 +161,7 @@ TEST(OptimizedEncoder, NormalizeStringWhitespacesRemove) {
 TEST(OptimizedEncoder, ConfigConverter) {
   std::string config;
   auto status = internal::TFReadFileToString(
-      file::JoinPath(::testing::SrcDir(), kConfigFilePath), &config);
+      tensorflow::io::JoinPath(::testing::SrcDir(), kConfigFilePath), &config);
   ASSERT_TRUE(status.ok());
 
   ::sentencepiece::SentencePieceProcessor processor;
