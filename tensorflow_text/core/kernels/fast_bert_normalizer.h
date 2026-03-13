@@ -19,7 +19,7 @@
 #include <vector>
 
 #include "absl/strings/string_view.h"
-#include "icu4c/source/common/unicode/utf8.h"
+#include "unicode/utf8.h"
 #include "tensorflow/lite/kernels/shim/status_macros.h"
 #include "tensorflow_text/core/kernels/darts_clone_trie_wrapper.h"
 #include "tensorflow_text/core/kernels/fast_bert_normalizer_model_generated.h"

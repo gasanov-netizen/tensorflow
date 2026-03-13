@@ -17,7 +17,7 @@
 #include <cassert>
 
 #include "absl/strings/string_view.h"
-#include "icu4c/source/common/unicode/utf8.h"
+#include "unicode/utf8.h"
 
 namespace tensorflow {
 namespace text {

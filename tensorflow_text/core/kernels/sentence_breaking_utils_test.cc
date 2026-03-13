@@ -20,14 +20,14 @@
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
-#include "icu4c/source/common/unicode/uchar.h"
-#include "icu4c/source/common/unicode/ucnv.h"
-#include "icu4c/source/common/unicode/ucnv_err.h"
-#include "icu4c/source/common/unicode/umachine.h"
-#include "icu4c/source/common/unicode/uniset.h"
-#include "icu4c/source/common/unicode/unistr.h"
-#include "icu4c/source/common/unicode/uset.h"
-#include "icu4c/source/common/unicode/utypes.h"
+#include "unicode/uchar.h"
+#include "unicode/ucnv.h"
+#include "unicode/ucnv_err.h"
+#include "unicode/umachine.h"
+#include "unicode/uniset.h"
+#include "unicode/unistr.h"
+#include "unicode/uset.h"
+#include "unicode/utypes.h"
 
 namespace tensorflow {
 namespace text {

@@ -19,9 +19,9 @@
 
 #include <gtest/gtest.h>
 #include "absl/strings/string_view.h"
-#include "icu4c/source/common/unicode/uchar.h"
-#include "icu4c/source/common/unicode/umachine.h"
-#include "icu4c/source/common/unicode/unistr.h"
+#include "unicode/uchar.h"
+#include "unicode/umachine.h"
+#include "unicode/unistr.h"
 
 namespace tensorflow {
 namespace text {

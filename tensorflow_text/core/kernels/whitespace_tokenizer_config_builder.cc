@@ -16,12 +16,12 @@
 
 #include <string>
 
-#include "icu4c/source/common/unicode/uchar.h"
-#include "icu4c/source/common/unicode/umachine.h"
-#include "icu4c/source/common/unicode/uniset.h"
-#include "icu4c/source/common/unicode/uset.h"
-#include "icu4c/source/common/unicode/utf8.h"
-#include "icu4c/source/common/unicode/utypes.h"
+#include "unicode/uchar.h"
+#include "unicode/umachine.h"
+#include "unicode/uniset.h"
+#include "unicode/uset.h"
+#include "unicode/utf8.h"
+#include "unicode/utypes.h"
 
 namespace tensorflow {
 namespace text {

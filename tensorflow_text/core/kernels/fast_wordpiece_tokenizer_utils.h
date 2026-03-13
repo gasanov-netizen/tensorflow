@@ -31,8 +31,8 @@
 
 #include "absl/status/statusor.h"
 #include "absl/strings/str_cat.h"
-#include "icu4c/source/common/unicode/uchar.h"
-#include "icu4c/source/common/unicode/umachine.h"
+#include "unicode/uchar.h"
+#include "unicode/umachine.h"
 
 namespace tensorflow {
 namespace text {

@@ -47,7 +47,7 @@ py_test(
     deps = [
         ":pywrap_fast_bert_normalizer_model_builder",
         "@absl_py//absl/flags",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
     ] + if_pywrap([":pybinds_library"]),
 )
 
@@ -72,7 +72,7 @@ py_test(
     ],
     deps = [
         ":pywrap_fast_wordpiece_tokenizer_model_builder",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
     ] + if_pywrap([":pybinds_library"]),
 )
 
@@ -98,7 +98,7 @@ py_test(
     ],
     deps = [
         ":pywrap_phrase_tokenizer_model_builder",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
     ] + if_pywrap([":pybinds_library"]),
 )
 
@@ -127,7 +127,7 @@ py_test(
     srcs = ["pywrap_whitespace_tokenizer_config_builder_test.py"],
     deps = [
         ":pywrap_whitespace_tokenizer_config_builder",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
     ] + if_pywrap([":pybinds_library"]),
 )
 

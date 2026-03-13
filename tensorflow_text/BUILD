@@ -208,7 +208,7 @@ py_test(
     srcs = ["python/ops/boise_offset_converter_test.py"],
     deps = [
         ":tensorflow_text",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
         # python/platform:client_testlib tensorflow dep,
     ] + if_pywrap([
         "//tensorflow_text/core/pybinds:pybinds_library",
@@ -236,8 +236,8 @@ py_test(
     srcs = ["python/ops/byte_splitter_test.py"],
     deps = [
         ":tensorflow_text",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
+        "//tensorflow/python/keras:keras",
         # python/platform:client_testlib tensorflow dep,
     ] + if_pywrap([
         "//tensorflow_text/core/pybinds:pybinds_library",
@@ -314,8 +314,8 @@ py_test(
     deps = [
         ":tensorflow_text",
         "@absl_py//absl/testing:parameterized",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
+        "//tensorflow/python/keras:keras",
         # python/compat tensorflow dep,
         # python/data/kernel_tests:test_base tensorflow dep,
         # python/framework:dtypes tensorflow dep,
@@ -354,8 +354,8 @@ py_test(
     deps = [
         ":tensorflow_text",
         "@absl_py//absl/testing:parameterized",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
+        "//tensorflow/python/keras:keras",
         # python/framework:constant_op tensorflow dep,
         # python/framework:dtypes tensorflow dep,
         # python/framework:test_lib tensorflow dep,
@@ -382,7 +382,7 @@ py_tf_text_library(
     ],
     deps = [
         "//tensorflow_text/core/pybinds:pywrap_model_converter",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
     ],
 )
 
@@ -401,8 +401,8 @@ py_test(
         "@absl_py//absl/flags",
         "@absl_py//absl/logging",
         "@absl_py//absl/testing:parameterized",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
+        "//tensorflow/python/keras:keras",
     ] + if_pywrap([
         "//tensorflow_text/core/pybinds:pybinds_library",
     ]),
@@ -440,8 +440,8 @@ py_test(
     deps = [
         ":tensorflow_text",
         "@absl_py//absl/testing:parameterized",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
+        "//tensorflow/python/keras:keras",
         # python/compat tensorflow dep,
         # python/data/kernel_tests:test_base tensorflow dep,
         # python/framework:dtypes tensorflow dep,
@@ -486,7 +486,7 @@ py_test(
     deps = [
         ":tensorflow_text",
         "@absl_py//absl/testing:parameterized",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
         # python/compat tensorflow dep,
         # python/data/kernel_tests:test_base tensorflow dep,
         # python/framework:dtypes tensorflow dep,
@@ -720,8 +720,8 @@ py_test(
     srcs = ["python/ops/ngrams_op_test.py"],
     deps = [
         ":tensorflow_text",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
+        "//tensorflow/python/keras:keras",
         # python/framework:constant_op tensorflow dep,
         # python/framework:errors tensorflow dep,
         # python/framework:test_lib tensorflow dep,
@@ -891,8 +891,8 @@ py_test(
     srcs = ["python/ragged/ragged_tensor_to_tensor_test.py"],
     deps = [
         ":tensorflow_text",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
+        "//tensorflow/python/keras:keras",
         # python/framework:constant_op tensorflow dep,
         # python/framework:test_lib tensorflow dep,
         # python/ops/ragged:ragged_factory_ops tensorflow dep,
@@ -919,7 +919,7 @@ py_test(
     srcs = ["python/ops/regex_split_ops_test.py"],
     deps = [
         ":regex_split_ops",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
         # python/framework:test_lib tensorflow dep,
     ],
 )
@@ -1146,8 +1146,8 @@ py_test(
         ":state_based_sentence_breaker_op",
         ":tensorflow_text",
         "@absl_py//absl/testing:parameterized",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
+        "//tensorflow/python/keras:keras",
         # python/framework:constant_op tensorflow dep,
         # python/framework:dtypes tensorflow dep,
         # python/framework:errors tensorflow dep,
@@ -1217,8 +1217,8 @@ py_library(
     name = "todense_layer",
     srcs = ["python/keras/layers/todense.py"],
     deps = [
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
+        "//tensorflow/python/keras:keras",
     ],
 )
 
@@ -1231,8 +1231,8 @@ py_test(
         ":todense_layer",
         "@absl_py//absl/testing:parameterized",
         "@pypi//numpy:pkg",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
+        "//tensorflow/python/keras:keras",
         # python/framework:test_lib tensorflow dep,
     ],
 )
@@ -1253,8 +1253,8 @@ py_library(
         ":unicode_script_tokenizer",
         ":whitespace_tokenizer_v2",
         ":wordpiece_tokenizer",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
+        "//tensorflow/python/keras:keras",
         # python/ops:lookup_ops tensorflow dep,
         # python/ops/ragged:ragged_conversion_ops tensorflow dep,
     ],
@@ -1269,8 +1269,8 @@ py_test(
         ":tokenization_layers",
         "@absl_py//absl/testing:parameterized",
         "@pypi//numpy:pkg",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
+        "//tensorflow/python/keras:keras",
     ] + if_pywrap([
         "//tensorflow_text/core/pybinds:pybinds_library",
     ]),
@@ -1305,8 +1305,8 @@ py_test(
         ":tensorflow_text",
         ":trimmer_ops",
         "@absl_py//absl/testing:parameterized",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
+        "//tensorflow/python/keras:keras",
         # python/framework:constant_op tensorflow dep,
         # python/framework:test_lib tensorflow dep,
         # python/ops/ragged:ragged_factory_ops tensorflow dep,
@@ -1407,8 +1407,8 @@ py_test(
     deps = [
         ":tensorflow_text",
         ":utf8_binarize_op",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
+        "//tensorflow/python/keras:keras",
         # python/framework:test_lib tensorflow dep,
         # python/platform:client_testlib tensorflow dep,
     ] + if_pywrap([
@@ -1512,8 +1512,8 @@ py_test(
     shard_count = 4,
     deps = [
         ":tensorflow_text",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
-        "@release_or_nightly//:tf_keras_pkg",
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
+        "//tensorflow/python/keras:keras",
         # python/framework:constant_op tensorflow dep,
         # python/framework:test_lib tensorflow dep,
         # python/ops/ragged:ragged_factory_ops tensorflow dep,
@@ -1608,7 +1608,7 @@ py_library(
     srcs = ["python/benchmarks/benchmark_utils.py"],
     deps = [
         "@pypi//numpy:pkg",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
         #  tensorflow datasets dep,
         # python/client:session tensorflow dep,
         # python/data/ops:dataset_ops tensorflow dep,
@@ -1634,7 +1634,7 @@ py_test(
         ":ops",
         "@absl_py//absl:app",
         "@absl_py//absl/testing:parameterized",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
         # python/framework:dtypes tensorflow dep,
         # python/user_ops:ops tensorflow dep,
     ] + if_pywrap([
@@ -1651,7 +1651,7 @@ py_test(
         ":ops",
         "@absl_py//absl:app",
         "@absl_py//absl/testing:parameterized",
-        "@release_or_nightly//:tensorflow_pkg",  # tensorflow package dep
+        "//tensorflow:tensorflow_py",  # tensorflow package dep
         # python/user_ops:ops tensorflow dep,
     ] + if_pywrap([
         "//tensorflow_text/core/pybinds:pybinds_library",

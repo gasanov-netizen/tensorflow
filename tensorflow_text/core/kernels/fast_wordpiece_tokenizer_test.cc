@@ -17,7 +17,7 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include "absl/flags/flag.h"
-#include "icu4c/source/common/unicode/uchar.h"
+#include "unicode/uchar.h"
 #include "tensorflow/core/platform/env.h"
 #include "tensorflow_text/core/kernels/fast_wordpiece_tokenizer_model_builder.h"
 
