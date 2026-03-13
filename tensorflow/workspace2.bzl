@@ -189,6 +189,17 @@ def _tf_repositories():
         urls = tf_mirror_urls("https://github.com/ryanhaining/cppitertools/archive/v2.0.tar.gz"),
     )
 
+    tf_http_archive(
+        name = "com_google_sentencepiece",
+        build_file = "//third_party/sentencepiece:BUILD",
+        patch_file = ["//third_party/sentencepiece:sp.patch"],
+        sha256 = "8409b0126ebd62b256c685d5757150cf7fcb2b92a2f2b98efb3f38fc36719754",
+        strip_prefix = "sentencepiece-0.1.96",
+        urls = tf_mirror_urls(
+            "https://github.com/google/sentencepiece/archive/refs/tags/v0.1.96.zip",
+        ),
+    )
+
     # LINT.IfChange(xnnpack)
     tf_http_archive(
         name = "XNNPACK",
