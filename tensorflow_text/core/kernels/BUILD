@@ -721,6 +721,7 @@ cc_test(
         # lite/kernels:test_util tensorflow dep,
         # lite/kernels/internal:tensor tensorflow dep,
         # lite/schema:schema_fbs tensorflow dep,
+        "@org_tensorflow//tensorflow/lite/kernels:test_util",
     ],
 )
 
