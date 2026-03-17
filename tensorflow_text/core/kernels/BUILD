@@ -361,8 +361,9 @@ cc_test(
     deps = [
         ":darts_clone_trie_builder",
         ":darts_clone_trie_wrapper",
-        "@com_google_absl//absl/status",
         "@com_google_googletest//:gtest_main",
+        "//tensorflow/core:test",
+        "//tensorflow/core:testlib",
     ],
 )
 
