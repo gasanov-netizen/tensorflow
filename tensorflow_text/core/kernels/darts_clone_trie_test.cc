@@ -14,6 +14,8 @@
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
+#include "absl/status/status.h"
+#include "tensorflow/core/platform/status_matchers.h"
 #include "tensorflow_text/core/kernels/darts_clone_trie_builder.h"
 #include "tensorflow_text/core/kernels/darts_clone_trie_wrapper.h"
 
@@ -21,7 +23,7 @@ namespace tensorflow {
 namespace text {
 namespace trie_utils {
 
-using ::testing::status::StatusIs;
+using ::tsl::testing::StatusIs;
 
 TEST(DartsCloneTrieTest, CreateCursorPointToRootAndTryTraverseOneStep) {
   // The test vocabulary.
@@ -152,7 +154,7 @@ TEST(DartsCloneTrieBuildError, KeysValuesSizeDifferent) {
 
   // Create the trie instance.
   ASSERT_THAT(BuildDartsCloneTrie(keys, values),
-              StatusIs(util::error::INVALID_ARGUMENT));
+              StatusIs(absl::StatusCode::kInvalidArgument));
 }
 
 TEST(DartsCloneTrieBuildError, DuplicatedKeys) {
@@ -161,7 +163,7 @@ TEST(DartsCloneTrieBuildError, DuplicatedKeys) {
 
   // Create the trie instance.
   ASSERT_THAT(BuildDartsCloneTrie(vocab_tokens),
-              StatusIs(util::error::INVALID_ARGUMENT));
+              StatusIs(absl::StatusCode::kInvalidArgument));
 }
 
 TEST(DartsCloneTrieBuildError, EmptyStringsInKeys) {
@@ -170,7 +172,7 @@ TEST(DartsCloneTrieBuildError, EmptyStringsInKeys) {
 
   // Create the trie instance.
   ASSERT_THAT(BuildDartsCloneTrie(vocab_tokens),
-              StatusIs(util::error::INVALID_ARGUMENT));
+              StatusIs(absl::StatusCode::kInvalidArgument));
 }
 
 TEST(DartsCloneTrieBuildError, NegativeValues) {
@@ -180,7 +182,7 @@ TEST(DartsCloneTrieBuildError, NegativeValues) {
 
   // Create the trie instance.
   ASSERT_THAT(BuildDartsCloneTrie(vocab_tokens, vocab_values),
-              StatusIs(util::error::INVALID_ARGUMENT));
+              StatusIs(absl::StatusCode::kInvalidArgument));
 }
 
 }  // namespace trie_utils

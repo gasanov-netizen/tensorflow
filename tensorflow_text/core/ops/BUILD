@@ -32,10 +32,9 @@ cc_test(
         "boise_offset_converter_op_test.cc",
     ],
     deps = [
-        # tf:framework tensorflow dep,
-        # tf:test tensorflow dep,
-        # tf:test_main tensorflow dep,
-        # tf/framework:shape_inference_testutil tensorflow dep,
+        "//tensorflow/core:test_main",
+        "//tensorflow/core:testlib",
+        "//tensorflow/lite/kernels/shim:tf_op_shim",
         "//tensorflow_text/core/kernels:boise_offset_converter_kernel",
     ],
 )

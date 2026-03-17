@@ -361,7 +361,8 @@ cc_test(
     deps = [
         ":darts_clone_trie_builder",
         ":darts_clone_trie_wrapper",
-        "@com_google_absl//absl/status",
+        "//tensorflow/core:test",
+        "//tensorflow/core:testlib",
         "@com_google_googletest//:gtest_main",
     ],
 )
@@ -674,6 +675,7 @@ cc_test(
         ":ngrams_tflite",
         "@com_google_googletest//:gtest_main",
         "@flatbuffers",
+        "//tensorflow/lite/kernels:test_util",
         # lite:string_util tensorflow dep,
         # lite/c:common tensorflow dep,
         # lite/kernels:test_util tensorflow dep,
@@ -1174,6 +1176,7 @@ cc_test(
         "@com_google_absl//absl/flags:flag",
         "@com_google_absl//absl/status",
         "@com_google_absl//absl/status:statusor",
+        "//tensorflow/core:testlib",
         # tf:lib tensorflow dep,
         # tf:test_main tensorflow dep,
     ],
@@ -1239,6 +1242,7 @@ cc_test(
         ":whitespace_tokenizer_config_builder",
         "@com_google_googletest//:gtest_main",
         "@icu//:common",
+        "//tensorflow/core:testlib",
         # tf:lib tensorflow dep,
         # tf:test_main tensorflow dep,
     ],
