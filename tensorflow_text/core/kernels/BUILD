@@ -1176,6 +1176,7 @@ cc_test(
         "@com_google_absl//absl/flags:flag",
         "@com_google_absl//absl/status",
         "@com_google_absl//absl/status:statusor",
+        "//tensorflow/core:testlib",
         # tf:lib tensorflow dep,
         # tf:test_main tensorflow dep,
     ],
