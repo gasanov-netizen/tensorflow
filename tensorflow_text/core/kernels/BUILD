@@ -1241,6 +1241,7 @@ cc_test(
         ":whitespace_tokenizer_config_builder",
         "@com_google_googletest//:gtest_main",
         "@icu//:common",
+        "//tensorflow/core:testlib",
         # tf:lib tensorflow dep,
         # tf:test_main tensorflow dep,
     ],
