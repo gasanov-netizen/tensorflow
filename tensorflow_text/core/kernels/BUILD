@@ -361,9 +361,9 @@ cc_test(
     deps = [
         ":darts_clone_trie_builder",
         ":darts_clone_trie_wrapper",
-        "@com_google_googletest//:gtest_main",
         "//tensorflow/core:test",
         "//tensorflow/core:testlib",
+        "@com_google_googletest//:gtest_main",
     ],
 )
 
@@ -675,6 +675,7 @@ cc_test(
         ":ngrams_tflite",
         "@com_google_googletest//:gtest_main",
         "@flatbuffers",
+        "//tensorflow/lite/kernels:test_util",
         # lite:string_util tensorflow dep,
         # lite/c:common tensorflow dep,
         # lite/kernels:test_util tensorflow dep,
