@@ -20,6 +20,9 @@ cc_test(
         # tf:test tensorflow dep,
         # tf:test_main tensorflow dep,
         # tf/framework:shape_inference_testutil tensorflow dep,
+        "//tensorflow/core:test_main",
+        "//tensorflow/core:testlib",
+        "//tensorflow/lite/kernels/shim:tf_op_shim",
         "//tensorflow_text/core/kernels:byte_splitter_kernel",
     ],
 )
@@ -101,6 +104,9 @@ cc_test(
         # tf:test tensorflow dep,
         # tf:test_main tensorflow dep,
         # tf/framework:shape_inference_testutil tensorflow dep,
+        "//tensorflow/core:test_main",
+        "//tensorflow/core:testlib",
+        "//tensorflow/lite/kernels/shim:tf_op_shim",
         "//tensorflow_text/core/kernels:utf8_binarize_kernel",
     ],
 )
