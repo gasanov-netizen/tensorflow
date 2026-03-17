@@ -93,6 +93,9 @@ cc_test(
         # tf:test_main tensorflow dep,
         # tf/framework:shape_inference_testutil tensorflow dep,
         # tf/framework:tensor_testutil tensorflow dep,
+        "//tensorflow/core:test_main",
+        "//tensorflow/core:testlib",
+        "//tensorflow/lite/kernels/shim:tf_op_shim",
         "//tensorflow_text/core/kernels:round_robin_trimmer_kernel",
     ],
 )
