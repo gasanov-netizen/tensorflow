@@ -850,6 +850,7 @@ pywrap_tensorflow_macro(
         "//tensorflow/python/util:cpp_python_util",
         "//tensorflow/python/util:function_parameter_canonicalizer",
         "//tensorflow/python/util:kernel_registry",
+        "//tensorflow/python/platform:_pywrap_cpu_feature_guard",
         "//tensorflow/tools/graph_transforms:transform_graph_lib",
         "@com_google_absl//absl/base",
         "@com_google_absl//absl/container:inlined_vector",

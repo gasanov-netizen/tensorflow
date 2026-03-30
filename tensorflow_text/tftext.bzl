@@ -9,6 +9,7 @@ load(
     _pywrap_library = "pywrap_library",
 )
 
+
 def py_tf_text_library(
         name,
         srcs = [],

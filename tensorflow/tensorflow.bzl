@@ -911,6 +911,7 @@ def tf_cc_shared_library_opensource(
         cc_library(
             name = "%s_pywrap_filter" % name,
             deps = roots,
+            visibility = visibility,
         )
         return
 
