@@ -693,6 +693,7 @@ tf_cc_library(
         ":edit_changes_cc_proto",
         "@com_google_absl//absl/strings",
         "@icu//:nfkc",
+        "//third_party/icu/data:conversion_data",
     ],
 )
 

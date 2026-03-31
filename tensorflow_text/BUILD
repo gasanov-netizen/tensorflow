@@ -131,9 +131,10 @@ py_library(
         ":wordpiece_tokenizer",
         ":wordshape_ops",
         # python/util:all_util tensorflow dep,
-        "//tensorflow_text/core/pybinds:tflite_registrar",
         "//tensorflow_text/tools/wordpiece_vocab",
-    ] + extra_py_deps(),
+    ] + extra_py_deps() + if_pywrap([
+        "//tensorflow_text/core/pybinds:pybinds_library",
+    ]),
 )
 
 # build_test
@@ -303,8 +304,9 @@ py_tf_text_library(
         # python/module tensorflow dep,
         # python/ops:array_ops_stack tensorflow dep,
         # python/ops/ragged:ragged_tensor tensorflow dep,
-        "//tensorflow_text/core/pybinds:pywrap_fast_bert_normalizer_model_builder",
-    ],
+    ] + if_pywrap([
+        "//tensorflow_text/core/pybinds:pybinds_library",
+    ]),
 )
 
 py_test(
@@ -381,9 +383,10 @@ py_tf_text_library(
         "//tensorflow_text/core/kernels/sentencepiece:sentencepiece_detokenizer_kernel",
     ],
     deps = [
-        "//tensorflow_text/core/pybinds:pywrap_model_converter",
         "//tensorflow:tensorflow_py",  # tensorflow package dep
-    ],
+    ] + if_pywrap([
+        "//tensorflow_text/core/pybinds:pybinds_library",
+    ]),
 )
 
 py_test(
@@ -425,8 +428,9 @@ py_tf_text_library(
         # python/ops:array_ops_stack tensorflow dep,
         # python/ops:math_ops tensorflow dep,
         # python/ops/ragged:ragged_tensor tensorflow dep,
-        "//tensorflow_text/core/pybinds:pywrap_fast_wordpiece_tokenizer_model_builder",
-    ],
+    ] + if_pywrap([
+        "//tensorflow_text/core/pybinds:pybinds_library",
+    ]),
 )
 
 py_test(
@@ -471,8 +475,9 @@ py_tf_text_library(
         # python/ops:array_ops_stack tensorflow dep,
         # python/ops:math_ops tensorflow dep,
         # python/ops/ragged:ragged_tensor tensorflow dep,
-        "//tensorflow_text/core/pybinds:pywrap_phrase_tokenizer_model_builder",
-    ],
+    ] + if_pywrap([
+        "//tensorflow_text/core/pybinds:pybinds_library",
+    ]),
 )
 
 py_test(
@@ -1501,8 +1506,9 @@ py_tf_text_library(
         # python/ops/ragged:ragged_conversion_ops tensorflow dep,
         # python/ops/ragged:ragged_string_ops tensorflow dep,
         # python/ops/ragged:ragged_tensor tensorflow dep,
-        "//tensorflow_text/core/pybinds:pywrap_whitespace_tokenizer_config_builder",
-    ],
+    ] + if_pywrap([
+        "//tensorflow_text/core/pybinds:pybinds_library",
+    ]),
 )
 
 py_test(

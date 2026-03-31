@@ -89,7 +89,9 @@ def py_tf_text_library(
                 "@org_tensorflow//tensorflow:mobile": [
                     "@org_tensorflow//tensorflow/core:portable_tensorflow_lib_lite",
                 ],
-                "//conditions:default": [],
+                "//conditions:default": [
+                    "@org_tensorflow//tensorflow/python:tensorflow_common_framework",
+                ],
             }),
         )
 
@@ -161,8 +163,7 @@ def tf_cc_library(
             "@org_tensorflow//tensorflow/core:portable_tensorflow_lib_lite",
         ],
         "//conditions:default": [
-            "//tensorflow/core:framework",
-            "//tensorflow/core:lib",
+            "//tensorflow/core:framework_headers_lib",
         ] + tf_deps + oss_deps,
     })
     native.cc_library(
@@ -220,8 +221,7 @@ def tflite_cc_library(
             "@org_tensorflow//tensorflow/core:portable_tensorflow_lib_lite",
         ],
         "//conditions:default": [
-            "//tensorflow/core:framework",
-            "//tensorflow/core:lib",
+            "//tensorflow/core:framework_headers_lib",
         ] + oss_deps,
     })
     native.cc_library(
@@ -239,8 +239,8 @@ def extra_py_deps():
     return [
         "//tensorflow:tensorflow_py",
         "//tensorflow/python/keras:keras",
-        "@pypi_tensorflow_datasets//:pkg",
-        "@pypi_tensorflow_metadata//:pkg",
+        # "@pypi_tensorflow_datasets//:pkg",
+        # "@pypi_tensorflow_metadata//:pkg",
     ]
 
 def py_library(name, lazy_imports = False, **kwargs):

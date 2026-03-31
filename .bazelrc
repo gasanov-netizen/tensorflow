@@ -742,7 +742,7 @@ common:release_linux_base --linkopt=-Wl,--undefined-version
 
 # Container environment settings below this point.
 # Test-related settings below this point.
-test:release_linux_base --build_tests_only --keep_going --test_output=errors --verbose_failures=true
+test:release_linux_base --build_tests_only --test_output=errors --verbose_failures=true
 test:release_linux_base --local_test_jobs=HOST_CPUS
 # Give only the list of failed tests at the end of the log
 test:release_linux_base --test_summary=short

@@ -36,6 +36,7 @@ py_test(
         # python/data/ops:dataset_ops tensorflow dep,
         "//tensorflow_text:ops",
     ] + if_pywrap([
+        "//tensorflow/python:_pywrap_tensorflow",
         "//tensorflow_text/core/pybinds:pybinds_library",
     ]),
 )
@@ -58,5 +59,8 @@ py_test(
         "@absl_py//absl/testing:absltest",
         "@pypi//numpy:pkg",
         "//tensorflow:tensorflow_py",  # tensorflow package dep
-    ],
+    ] + if_pywrap([
+        "//tensorflow/python:_pywrap_tensorflow",
+        "//tensorflow_text/core/pybinds:pybinds_library",
+    ]),
 )
